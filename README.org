@@ -1,5 +1,5 @@
 
-* hdpGLM @@html:<img src='man/figures/logo.png' align="right" height="139" />@@
+* occupar @@html:<img src='man/figures/logo.png' align="right" height="145" />@@
 
 #+ATTR_HTML: title="Travis hdpGLM"
   [[https://travis-ci.org/DiogoFerrari/hdpGLM][file:https://travis-ci.org/DiogoFerrari/hdpGLM.svg]]
