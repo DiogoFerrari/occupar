@@ -1,0 +1,87 @@
+
+* hdpGLM @@html:<img src='man/figures/logo.png' align="right" height="139" />@@
+
+#+ATTR_HTML: title="Travis hdpGLM"
+  [[https://travis-ci.org/DiogoFerrari/hdpGLM][file:https://travis-ci.org/DiogoFerrari/hdpGLM.svg]]
+
+* Overview
+
+The package occupar (Occupation Classification in R) provides:
+1. a handful of functions to convert between different versions of the International Standard Classification of Occupations (ISCO): ISCO-68, ISCO-88, ISCO-08.
+2. a set of functions to compute class schemes (EGP, ISEI, ESeC, etc.) based on ISCO.
+
+The current package benefited from [[http://www.harryganzeboom.nl/][Harry Ganzeboom]]’s work of ISCO and class schemes.
+   
+* Instalation
+
+# Install the development version (requires the package "devtools", so install it first if it is not installed already)
+
+#+BEGIN_SRC R :exports code
+devtools::install_github("DiogoFerrari/occupar")
+# If you don't want to update the dependencies, use: (you may need to install some dependencies manually)
+devtools::install_github("DiogoFerrari/occupar", dependencies=F)
+#+END_SRC
+
+NOTE: it may be necessary to create a token to install the package from the git repository in case it is private (see note at the bottom of help page in R by running =help(install_github)=).
+
+* Usage
+
+#+NAME: 
+#+BEGIN_SRC R :exports code
+## --------------------------------
+## Converting from ISCO-A to ISCO-B
+## --------------------------------
+## The general format of the funcions are:
+## isco<from>to<to> : convert from ISCO-<from> to ISCO-<to>, where <from> and <to> are the year identifying the ISCO
+## isco<yr>labels   : get the labels for ISCO<yr>, where is  the year identifying the ISCO
+
+
+## Example: Converting from ISCO-08 to ISCO-88
+## -------------------------------------------
+## suppose you have ISCO-08 codes (labels are not needed, only the codes; they are included for ilustration only):
+table = tibble::tribble(
+            ~isco08, ~isco08.label,
+            2310, "University and higher education teachers",
+            2641, "Authors and related writers",
+            5230, "Cashiers and ticket clerks",
+            9629, "Elementary workers not elsewhere classified"
+        )
+
+## you can get a vector with corresponding ISCO-88 codes using:
+isco88 = occupar::isco08to88(table$isco08)
+isco88
+
+## you can also get the labels of the ISCO-88:
+isco88.labels = occupar::isco88labels(isco88)
+isco88.labels
+
+
+## --------------------------
+## Computing EGP from ISCO-X
+## --------------------------
+## To compute class scheme (EGP,ISEI, ESec, etc) from ISCO-X, where X represent the year of the ISCO, use:
+## isco<X>to<class-scheme>
+
+## Example (labels of ISCO codes are not needed, only the codes; they are included for ilustration only):
+table = tibble::tribble(
+            ~isco08, ~isco08.label                                , ~n.employees, ~self.employed,
+            2310   , "University and higher education teachers"   , NA          , 0,
+            2641   , "Authors and related writers"                , 0           , 1,
+            5230   , "Cashiers and ticket clerks"                 ,0            , 0,
+            9629   , "Elementary workers not elsewhere classified", 0           , 1,
+            1200   , "Corporate managers"                         , 20          , 1,
+        )
+
+
+isco88toEGP(table$isco08, n.employees=table$n.employees, self.employed=table$self.employed,  n.classes=11)
+isco88toEGP(table$isco08, n.employees=table$n.employees, self.employed=table$self.employed,  n.classes=7)
+
+## using pipe and dplyr workflow:
+table %>% dplyr::mutate(EGP.11.classes = isco88toEGP(isco08, n.employees=n.employees, self.employed=self.employed,  n.classes=11)) 
+table %>% dplyr::mutate(EGP.5.classes = isco88toEGP(isco08, n.employees=n.employees, self.employed=self.employed,  n.classes=5)) 
+table %>% dplyr::mutate(EGP.3.classes = isco88toEGP(isco08, n.employees=n.employees, self.employed=self.employed,  n.classes=3)) 
+
+#+END_SRC
+
+
+
