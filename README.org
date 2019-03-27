@@ -2,7 +2,7 @@
 * occupar @@html:<img src='man/figures/logo.png' align="right" height="145" />@@
 
 #+ATTR_HTML: title="Travis occupar"
-  [[https://travis-ci.org/DiogoFerrari/hdpGLM][file:https://travis-ci.org/DiogoFerrari/occupar.svg]]
+  [[https://travis-ci.org/DiogoFerrari/occupar][file:https://travis-ci.org/DiogoFerrari/occupar.svg]]
 
 * Overview
 
@@ -28,6 +28,10 @@ NOTE: it may be necessary to create a token to install the package from the git 
 
 #+NAME: 
 #+BEGIN_SRC R :exports code
+library(magrittr)
+library(tibble)
+library(dplyr)
+library(occupar)
 ## --------------------------------
 ## Converting from ISCO-A to ISCO-B
 ## --------------------------------
