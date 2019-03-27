@@ -918,7 +918,7 @@ isco08toISEI08 <- function(isco08, display.nas=FALSE)
 #' @param supervisor a vector containing the value 1 whenever the person is a supervisor
 #' @param n.employees a vector containing the number of employees.
 #' @param n.classes either one of the following integers: 10 (default), 7 ,6, or 4 indicating the number of categories to be used inthe ESEeC scheme. See details.
-#' @param keep.unempoloyed boolean (default \code{TRUE}) indicating to keep (if \code{TRUE}) or not (if \code{FALSE}) the class of unemployed in the reduced ESeC scheme (with number of classes equal ot 7, 6, or 4). See details.
+#' @param keep.unemployed boolean (default \code{TRUE}) indicating to keep (if \code{TRUE}) or not (if \code{FALSE}) the class of unemployed in the reduced ESeC scheme (with number of classes equal ot 7, 6, or 4). See details.
 #' @param isco88.armed.forces.code numeric vector with the code for armed forces. Default is \code{c(0, 10, 100, 110)}
 #'
 #' @return It returns a list with two elements, the ESec code and its label

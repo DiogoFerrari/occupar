@@ -1,18 +1,18 @@
 
 citHeader("To cite occupar in publications use:")
-citEntry(entry = "",
-         title = "",
+citEntry(entry = "misc",
+         title = "Occupar: Occupation and Class Scheme Classification in R",
          author = personList(as.person("Diogo Ferrari")),
-         journal = "...",
-         year = "",
+         journal = "",
+         year = "2019",
          volume = "",
          number = "",
          pages = "",
-         url = "",
+         url = "https://github.com/DiogoFerrari/occupar",
          textVersion = paste("Ferrari, Diogo (2018).", 
-                             "...",
-                             "...",
-                             "...")
+                             "Occupar: Occupation and Class Scheme Classification in R",
+                             "R Package",
+                             "")
          )
 
 

@@ -24,9 +24,9 @@ isco88toESeC(isco88, employed = NULL, unemployed = NULL,
 
 \item{n.classes}{either one of the following integers: 10 (default), 7 ,6, or 4 indicating the number of categories to be used inthe ESEeC scheme. See details.}
 
-\item{isco88.armed.forces.code}{numeric vector with the code for armed forces. Default is \code{c(0, 10, 100, 110)}}
+\item{keep.unemployed}{boolean (default \code{TRUE}) indicating to keep (if \code{TRUE}) or not (if \code{FALSE}) the class of unemployed in the reduced ESeC scheme (with number of classes equal ot 7, 6, or 4). See details.}
 
-\item{keep.unempoloyed}{boolean (default \code{TRUE}) indicating to keep (if \code{TRUE}) or not (if \code{FALSE}) the class of unemployed in the reduced ESeC scheme (with number of classes equal ot 7, 6, or 4). See details.}
+\item{isco88.armed.forces.code}{numeric vector with the code for armed forces. Default is \code{c(0, 10, 100, 110)}}
 }
 \value{
 It returns a list with two elements, the ESec code and its label
