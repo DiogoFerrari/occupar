@@ -1,3 +1,12 @@
 ^occupar\.Rproj$
 ^\.Rproj\.user$
+^cran-comments\.md$
+^CRAN-RELEASE$
+^.*\.Rproj$
+^\.Rproj\.user$
+TAGS
 README.org
+cran-comments.md
+.gitignore
+.git
+.travis.yml
