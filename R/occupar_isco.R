@@ -2,18 +2,21 @@
 
 display.nas <- function(isco, conv.from, conv.to)
 {
-    
-        print(
-            isco %>%
-            dplyr::rename(conv.from=!!conv.from,
-                   conv.to  =!!conv.to,
-                   ) %>% 
-            dplyr::filter(!stats::complete.cases(conv.to)) %>%
-            dplyr::filter( stats::complete.cases(conv.from)) %>% 
-            dplyr::filter(!duplicated(.)) %>%
-            dplyr::arrange(conv.from)  %>%
-            dplyr::rename_at(dplyr::vars(conv.from, conv.to), dplyr::funs(c(conv.from, conv.to) ) )
-          , n=Inf) 
+    mismatch = isco %>%
+        dplyr::rename(conv.from=!!conv.from,
+                      conv.to  =!!conv.to,
+                      ) %>% 
+        dplyr::filter(!stats::complete.cases(conv.to)) %>%
+        dplyr::filter( stats::complete.cases(conv.from)) %>% 
+        dplyr::filter(!duplicated(.)) %>%
+        dplyr::arrange(conv.from)  %>%
+        dplyr::rename_at(dplyr::vars(conv.from, conv.to), dplyr::funs(c(conv.from, conv.to) ) )
+    if (nrow(mismatch)>0) {
+        msg <- paste0('\n','Mismatched cases when converting from ', conv.from, ' to ', conv.to, ':',  '\n'); cat(msg)
+        print(mismatch, n=Inf) 
+    }else{
+        msg <- paste0('\n','No mismatched cases when converting from ', conv.from, ' to ', conv.to, '!',  '\n'); cat(msg)
+    }
 }
 
 
@@ -2488,6 +2491,7 @@ isco88to08 <- function(isco88, display.nas=FALSE)
                                              isco88 == 4221 ~ 4221.1 ,
                                              isco88 == 4222 ~ 4220.6 ,
                                              isco88 == 4223 ~ 4223.2 ,
+                                             isco88 == 4290 ~ 4200   ,
                                              isco88 == 5000 ~ 5000.1 ,
                                              isco88 == 5100 ~ 5100.1 ,
                                              isco88 == 5110 ~ 5110.1 ,
@@ -3686,6 +3690,7 @@ isco88labels <- function(isco88, display.nas=FALSE)
                                              isco88 == 4221 ~ "Travel agency and related clerks",
                                              isco88 == 4222 ~ "Receptionists and information clerks",
                                              isco88 == 4223 ~ "Telephone switchboard operators",
+                                             isco88 == 4290 ~ "other customer services clerks",
                                              isco88 == 5000 ~ "Service workers and shop and market sales workers",
                                              isco88 == 5100 ~ "Personal and protective services workers",
                                              isco88 == 5110 ~ "Travel attendants and related workers",

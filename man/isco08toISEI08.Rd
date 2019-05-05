@@ -17,3 +17,9 @@ It returns a vector with ISEI-08 codes.
 \description{
 The function recodes ISCO-08 into ISEI-08.
 }
+\details{
+The ISEI-08 is an update of the ISEI (or ISEI-92). The funtion converts ISCO-08 to that updated version. References:
+
+Ganzeboom, H. B., De Graaf, P. M., & Treiman, D. J.,  (1992) A standard international socio-economic index of occupational status, Social science research, 21(1), 1–56. 
+Ganzeboom, H. B., (2010) A new international socio-economic index (isei) of occupational status for the international standard classification of occupation 2008 (isco-08) constructed with data from the issp 2002-2007, In , Annual Conference of International Social Survey Programme, Lisbon (pp. )
+}
