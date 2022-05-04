@@ -4,10 +4,17 @@
 \alias{isco88toESeC}
 \title{Compute ESeC}
 \usage{
-isco88toESeC(isco88, employed = NULL, unemployed = NULL,
-  self.employed = NULL, supervisor = NULL, n.employees = NULL,
-  n.classes = 10, keep.unemployed = TRUE,
-  isco88.armed.forces.code = c(0, 10, 100, 110))
+isco88toESeC(
+  isco88,
+  employed = NULL,
+  unemployed = NULL,
+  self.employed = NULL,
+  supervisor = NULL,
+  n.employees = NULL,
+  n.classes = 10,
+  keep.unemployed = TRUE,
+  isco88.armed.forces.code = c(0, 10, 100, 110)
+)
 }
 \arguments{
 \item{isco88}{a vector with the ISCO-88 codes}

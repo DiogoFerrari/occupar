@@ -4,8 +4,13 @@
 \alias{isco88toEGP}
 \title{Recode occupation to EGP class scheme}
 \usage{
-isco88toEGP(isco88, n.employees = NULL, self.employed = NULL,
-  collapse = FALSE, n.classes = 11)
+isco88toEGP(
+  isco88,
+  n.employees = NULL,
+  self.employed = NULL,
+  collapse = FALSE,
+  n.classes = 11
+)
 }
 \arguments{
 \item{isco88}{numeric vector with the isco88 4 digit code.}
